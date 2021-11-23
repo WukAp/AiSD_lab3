@@ -4,20 +4,21 @@
 #include <stdexcept>
 #include <iostream>
 
-
 class BinaryHeap{
 private:
 	int* binary_heap;
 	size_t size;
 	int capasity;
-	int const SIMPLE_CAPASITY = 100;
+	int const SIMPLE_CAPASITY = 50;
 
 public:
+
 	BinaryHeap() {
 		this->size = 0;
 		this->capasity = SIMPLE_CAPASITY;
 		this->binary_heap = new int[capasity];
 	}
+
 	BinaryHeap(int* binaryHeap, size_t size) {
 		this->size = size;
 		this->capasity = 2 * size;
@@ -28,16 +29,19 @@ public:
 
 	class DftIterator : public Iterator {
 	private:
-		Stack stack;
-		int curr_index;
 		int* binary_heap;
 		size_t size;
-		int count_out;
+		int curr_index;
+		int outs;
+		Stack stack;
+
 	public:
+
 		DftIterator(int* binary_heap, size_t size) {
-			this->size = size;
 			this->binary_heap = binary_heap;
+			this->size = size;
 			this->curr_index = 0;
+			this->outs = 0;
 		}
 
 		~DftIterator() {
@@ -45,43 +49,47 @@ public:
 		}
 
 		int next() {
-			int temp;
-			if (curr_index <= size - 1) {
-				temp = binary_heap[curr_index];
-				if (2 * curr_index + 2 <= size - 1) {
-					stack.push(2 * curr_index + 2);
-				}
-				curr_index = 2 * curr_index + 1;
-			}
+			if (!has_next())
+				throw std::out_of_range::out_of_range("The heap is empty");
 			else {
-				curr_index = stack.takeLast();
-				temp = binary_heap[curr_index];
-			}
-			count_out++;
-			return temp;
+				int buff;
+				if (curr_index <= size - 1) {
+					buff = binary_heap[curr_index];
+					if (2 * curr_index + 2 <= size - 1)
+						stack.push(2 * curr_index + 2);
+
+					curr_index = 2 * curr_index + 1;
+				}
+				else {
+					curr_index = stack.takeLast();
+					buff = binary_heap[curr_index];
+				}
+				outs++;
+				return buff;
+			}			
 		};
 
 		bool has_next() {
-			if (curr_index > size - 1 && count_out < size) {
+			if (curr_index > size - 1 && outs < size) {
 				curr_index = stack.takeLast();
 				return has_next();
 			}
-			return (!stack.isEmpty() || curr_index <= size - 1 && count_out < size);
+			return (!stack.isEmpty() || curr_index <= size - 1 && outs < size);
 		}
-
 	};
 
 	class BftIterator : public Iterator {
 	private:
-		Queue queue;
 		int* binary_heap;
 		size_t size;
 		int curr_index;
+		Queue queue;
+
 	public:
 
 		BftIterator(int* binary_heap, size_t size) {
-			this->size = size;
 			this->binary_heap = binary_heap;
+			this->size = size;
 			this->curr_index = 0;
 			queue.push(this->binary_heap[curr_index]);
 		}
@@ -102,6 +110,7 @@ public:
 				return queue.takeTop();
 			}
 		};
+
 		bool has_next() {
 			return !queue.isEmpty();
 		}
@@ -115,38 +124,8 @@ public:
 		return size;
 	}
 
-	int at(int index) {
-		if (index >= size) {
-			throw std::out_of_range::out_of_range("The index is out of range");
-		}
-		else
-			return binary_heap[index];
-		std::cout << index;
-	}
-
-	void deleteTheLastLeaf() {
-		if (size == 0) {
-			throw std::out_of_range::out_of_range("The heap is empty");
-		}
-		else
-			size--;
-	}
-
-	void addTheLeaf(int value) {
-		if (size >= capasity) {
-			int* buff = binary_heap;
-			capasity += SIMPLE_CAPASITY;
-			binary_heap = new int[capasity];
-			for (int i = 0; i < size; i++)
-				binary_heap[i] = buff[i];
-			delete[] buff;
-		}
-		binary_heap[size] = value;
-		size++;
-	}
-
 	void print() {
-		Iterator* iterator = create_dft_iterator();
+		Iterator* iterator = create_bft_iterator();
 		/*for (int i = 0; i < getSize(); i++)
 			std::cout << at(i) << ' ';*/
 		while (iterator->has_next())
@@ -154,12 +133,11 @@ public:
 		std::cout << std::endl;
 	}
 
-	Iterator* create_bft_iterator() {
-		return new BftIterator(this->binary_heap, size);
-	};
-
-	Iterator* create_dft_iterator() {
-		return new DftIterator(this->binary_heap, size);
+	bool ñontains(int desired_value){
+		Iterator* iterator = create_bft_iterator();
+		while (iterator->has_next())
+			if (iterator->next() == desired_value) return true;
+		return false;		
 	}
 
 	void insert(int value) {
@@ -171,22 +149,59 @@ public:
 				binary_heap[i] = buff[i];
 			delete[] buff;
 		}
+
 		binary_heap[size] = value;
 		size++;
+
 		if (size > 0) {
 			int curr_index = size - 1;
 			int par_index = (curr_index - 1) / 2;
 			while ((curr_index > 0) && (binary_heap[par_index] < binary_heap[curr_index])) {
-				int buff = binary_heap[par_index];
-				binary_heap[par_index] = binary_heap[curr_index];
-				binary_heap[curr_index] = buff;
+				std::swap(binary_heap[curr_index], binary_heap[par_index]);
 				curr_index = par_index;
 				par_index = (curr_index - 1) / 2;
 			}
 		}
 	}
 
+	void remove(int value_to_delete) {
+		if (size > 0) {
+			for (size_t i = 0; i < size; i++) {
+				if (binary_heap[i] == value_to_delete) {
+					std::swap(binary_heap[i], binary_heap[size - 1]);
+					size--;
+					int curr_index = i;
+					int kid_index1 = 2 * curr_index + 1;
+					int kid_index2 = 2 * curr_index + 2;
+
+
+					while ((kid_index1 < size) && (binary_heap[curr_index] < binary_heap[kid_index1])
+						|| (kid_index2 < size) && (binary_heap[curr_index] < binary_heap[kid_index2])) {
+						
+						if ((kid_index2 >= size) || (binary_heap[kid_index2] < binary_heap[kid_index1])){
+							std::swap(binary_heap[curr_index], binary_heap[kid_index1]);
+							curr_index = kid_index1;
+						}
+						else {
+							std::swap(binary_heap[curr_index], binary_heap[kid_index2]);
+							curr_index = kid_index2;
+						}
+						kid_index1 = 2 * curr_index + 1;
+						kid_index2 = 2 * curr_index + 2;					
+						
+					}					
+				}
+			}
+		}
+		else
+			throw std::out_of_range::out_of_range("The heap is empty");
+	}
+
+	Iterator* create_dft_iterator() {
+		return new DftIterator(this->binary_heap, size);
+	}
+
+	Iterator* create_bft_iterator() {
+		return new BftIterator(this->binary_heap, size);
+	};
 };
-
-
-
