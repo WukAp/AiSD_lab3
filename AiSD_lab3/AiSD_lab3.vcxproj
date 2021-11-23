@@ -140,6 +140,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AiSD_lab3.cpp" />
+    <ClCompile Include="BinaryHeap.cpp" />
+    <ClCompile Include="Iterator.cpp" />
+    <ClCompile Include="Queue.cpp" />
+    <ClCompile Include="Stack.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BinaryHeap.h" />
+    <ClInclude Include="Iterator.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Stack.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AiSD_lab3.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
