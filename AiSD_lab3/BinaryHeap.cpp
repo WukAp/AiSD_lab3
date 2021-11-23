@@ -28,10 +28,7 @@ public:
 			this->curr_index = 0;
 			this->outs = 0;
 		}
-		//destructor of the DftIterator
-		~DftIterator() {
-			delete[] binary_heap;
-		}
+		
 		//return next node of the graph
 		int next() {
 			if (!has_next())
@@ -78,10 +75,7 @@ public:
 			this->curr_index = 0;
 			queue.push(this->binary_heap[curr_index]);
 		}
-		//destructor of the BftIterator
-		~BftIterator() {
-			delete[] binary_heap;
-		};
+
 		//return next node of the graph
 		int next() {
 			if (!has_next())
