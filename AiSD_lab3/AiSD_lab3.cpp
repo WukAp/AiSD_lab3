@@ -112,6 +112,5 @@ int main() {
 		std::cout << "traversing the graph in depth: \n";
 		while (dft_iterator->has_next())
 			std::cout << dft_iterator->next() << ' ';
-		std::cout << std::endl;
 	}
 }
