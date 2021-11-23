@@ -4,8 +4,7 @@
 #include <iostream>
 class Stack {
 private:
-
-	class Node {
+	class Node {//node of the stack
 	public:
 		int value;
 		Node* prev;
@@ -17,27 +16,24 @@ private:
 	Node* last;
 	size_t size;
 public:
-
+	// constructor of the Stack
 	Stack() {
 		last = NULL;
 		size = 0;
 	}
-
-
+	// destructor of the Stack
 	~Stack() {
 		while (!isEmpty())
 			takeLast();
 	}
-
-
+	//push the last node
 	void push(int value) {
 		Node* buff = last;
 		last = new Node(value);
 		last->prev = buff;
 		size++;
 	}
-
-
+	//return the last node of the stack and delete them
 	int takeLast()	{
 		if (isEmpty())
 			throw std::out_of_range("The stack is empty");
@@ -50,29 +46,13 @@ public:
 			return last_value;
 		}		
 	}
-
-
-
+	//is the stack empty
 	bool isEmpty()	{
 		return (size==0);
 	}
-
-
+	//return the size of the stack
 	size_t getSize()	{
 		return size;
 	}
 
-	void print() {
-		if (size == 0)
-			std::cout << "The stack is empty";
-		else {
-			Node* buff = last;
-
-			while (buff != NULL) {
-				std::cout << buff->value << ' ';
-				buff = buff->prev;
-			}
-		}
-		std::cout << std::endl;
-	}
 };
