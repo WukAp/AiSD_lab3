@@ -2,7 +2,6 @@
 #include "Stack.h"
 #include "Queue.h"
 #include <stdexcept>
-#include <iostream>
 
 class BinaryHeap{
 private:
@@ -145,7 +144,7 @@ public:
 			}
 		}
 	}
-	//deletion all nodes with the user's value
+	//deletion node with the user's value
 	void remove(int value_to_delete) {
 		for (int i = 0; i < size; i++) {
 			if (binary_heap[i] == value_to_delete) {//finding all nodes with the user's value
@@ -170,6 +169,7 @@ public:
 					kid_index1 = 2 * curr_index + 1;
 					kid_index2 = 2 * curr_index + 2;
 				}
+				break;
 			}
 		}
 	}
