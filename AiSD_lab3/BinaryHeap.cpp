@@ -117,9 +117,8 @@ public:
 	}
 	//is binary heap contains the desired value
 	bool ñontains(int desired_value){
-		Iterator* iterator = create_bft_iterator();
-		while (iterator->has_next())
-			if (iterator->next() == desired_value) return true;
+		for (int i = 0; i < size; i++)
+			if (binary_heap[i] == desired_value) return true;
 		return false;		
 	}
 	//insert the node by value
@@ -148,7 +147,7 @@ public:
 	}
 	//deletion all nodes with the user's value
 	void remove(int value_to_delete) {
-		for (size_t i = 0; i < size; i++) {
+		for (int i = 0; i < size; i++) {
 			if (binary_heap[i] == value_to_delete) {//finding all nodes with the user's value
 				//deletion node
 				std::swap(binary_heap[i], binary_heap[size - 1]);
