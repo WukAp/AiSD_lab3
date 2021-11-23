@@ -146,7 +146,7 @@ public:
 	}
 
 	void print() {
-		Iterator* iterator = create_bft_iterator();
+		Iterator* iterator = create_dft_iterator();
 		/*for (int i = 0; i < getSize(); i++)
 			std::cout << at(i) << ' ';*/
 		while (iterator->has_next())

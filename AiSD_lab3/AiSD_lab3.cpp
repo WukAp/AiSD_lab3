@@ -22,8 +22,6 @@ int main() {
 
 
 
-
-
 	heap.insert(2);
 	heap.insert(7);
 	heap.print();
