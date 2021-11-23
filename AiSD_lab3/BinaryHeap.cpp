@@ -169,9 +169,10 @@ public:
 					kid_index1 = 2 * curr_index + 1;
 					kid_index2 = 2 * curr_index + 2;
 				}
-				break;
+				return;
 			}
 		}
+		throw std::invalid_argument("The value not found");
 	}
 	//creating iterator for depth-first search
 	Iterator* create_dft_iterator() {
