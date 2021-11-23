@@ -74,7 +74,7 @@ namespace AiSDlab3Unittests
 			Assert::IsTrue(!heap.ñontains(2));
 			Assert::IsTrue(!heap.ñontains(3));
 		}
-		TEST_METHOD(create_bft_iterator) {
+		TEST_METHOD(create_bft_iteratorTest) {
 			BinaryHeap heap;
 			heap.insert(5);
 			heap.insert(4);
@@ -91,7 +91,7 @@ namespace AiSDlab3Unittests
 			}
 			Assert::IsTrue(i == -1);
 		}
-		TEST_METHOD(create_dft_iterator) {
+		TEST_METHOD(create_dft_iteratorTest) {
 			BinaryHeap heap;
 			heap.insert(5);
 			heap.insert(4);
