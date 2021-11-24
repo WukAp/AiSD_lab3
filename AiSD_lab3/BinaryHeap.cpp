@@ -17,7 +17,7 @@ public:
 		int* binary_heap;
 		size_t size;
 		int curr_index;
-		int outs;
+		int count_of_passed_node;
 		Stack stack;
 
 	public:
@@ -26,7 +26,7 @@ public:
 			this->binary_heap = binary_heap;
 			this->size = size;
 			this->curr_index = 0;
-			this->outs = 0;
+			this->count_of_passed_node = 0;
 		}
 		
 		//return next node of the graph
@@ -46,17 +46,15 @@ public:
 					curr_index = stack.takeLast();
 					buff = binary_heap[curr_index];
 				}
-				outs++;
+				count_of_passed_node++;
+				if (curr_index > size - 1 && has_next())
+					curr_index = stack.takeLast();
 				return buff;
 			}			
 		};
 		//is the next value exist
 		bool has_next() {
-			if (curr_index > size - 1 && outs < size) {
-				curr_index = stack.takeLast();
-				return has_next();
-			}
-			return (!stack.isEmpty() || curr_index <= size - 1 && outs < size);
+			return (count_of_passed_node < size);
 		}
 	};
 	//iterator for breadth-first search

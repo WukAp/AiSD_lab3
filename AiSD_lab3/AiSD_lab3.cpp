@@ -34,6 +34,7 @@ int main() {
 	}
 	std::cout << std::endl;
 
+
 	std::cout << "is the value 0 in the graph? - "<< (heap.ñontains(0)?"yes":"no") << "\n";
 	std::cout << "is the value 1 in the graph? - "<< (heap.ñontains(1)?"yes":"no") << "\n";
 	std::cout << "is the value 2 in the graph? - "<< (heap.ñontains(2)?"yes":"no") << "\n";
