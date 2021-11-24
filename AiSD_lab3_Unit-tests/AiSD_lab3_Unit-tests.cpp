@@ -31,12 +31,12 @@ namespace AiSDlab3Unittests
 			heap.insert(0);
 			heap.insert(-1);
 
-			Assert::IsTrue(heap.ñontains(-1));
-			Assert::IsTrue(heap.ñontains(0));
-			Assert::IsTrue(heap.ñontains(2));
-			Assert::IsTrue(heap.ñontains(3));
-			Assert::IsTrue(!heap.ñontains(1));
-			Assert::IsTrue(!heap.ñontains(10));
+			Assert::IsTrue(heap.contains(-1));
+			Assert::IsTrue(heap.contains(0));
+			Assert::IsTrue(heap.contains(2));
+			Assert::IsTrue(heap.contains(3));
+			Assert::IsTrue(!heap.contains(1));
+			Assert::IsTrue(!heap.contains(10));
 		}
 		TEST_METHOD(removeTest) {
 			BinaryHeap heap;
@@ -45,34 +45,34 @@ namespace AiSDlab3Unittests
 			heap.insert(0);
 			heap.insert(1);
 
-			Assert::IsTrue(heap.ñontains(1));
-			Assert::IsTrue(heap.ñontains(0));
-			Assert::IsTrue(heap.ñontains(2));
-			Assert::IsTrue(heap.ñontains(3));
+			Assert::IsTrue(heap.contains(1));
+			Assert::IsTrue(heap.contains(0));
+			Assert::IsTrue(heap.contains(2));
+			Assert::IsTrue(heap.contains(3));
 
 			heap.remove(1);
-			Assert::IsTrue(!heap.ñontains(1));
-			Assert::IsTrue(heap.ñontains(0));
-			Assert::IsTrue(heap.ñontains(2));
-			Assert::IsTrue(heap.ñontains(3));
+			Assert::IsTrue(!heap.contains(1));
+			Assert::IsTrue(heap.contains(0));
+			Assert::IsTrue(heap.contains(2));
+			Assert::IsTrue(heap.contains(3));
 
 			heap.remove(0);
-			Assert::IsTrue(!heap.ñontains(1));
-			Assert::IsTrue(!heap.ñontains(0));
-			Assert::IsTrue(heap.ñontains(2));
-			Assert::IsTrue(heap.ñontains(3));
+			Assert::IsTrue(!heap.contains(1));
+			Assert::IsTrue(!heap.contains(0));
+			Assert::IsTrue(heap.contains(2));
+			Assert::IsTrue(heap.contains(3));
 
 			heap.remove(2);
-			Assert::IsTrue(!heap.ñontains(1));
-			Assert::IsTrue(!heap.ñontains(0));
-			Assert::IsTrue(!heap.ñontains(2));
-			Assert::IsTrue(heap.ñontains(3));
+			Assert::IsTrue(!heap.contains(1));
+			Assert::IsTrue(!heap.contains(0));
+			Assert::IsTrue(!heap.contains(2));
+			Assert::IsTrue(heap.contains(3));
 
 			heap.remove(3);
-			Assert::IsTrue(!heap.ñontains(1));
-			Assert::IsTrue(!heap.ñontains(0));
-			Assert::IsTrue(!heap.ñontains(2));
-			Assert::IsTrue(!heap.ñontains(3));
+			Assert::IsTrue(!heap.contains(1));
+			Assert::IsTrue(!heap.contains(0));
+			Assert::IsTrue(!heap.contains(2));
+			Assert::IsTrue(!heap.contains(3));
 		}
 		TEST_METHOD(create_bft_iteratorTest) {
 			BinaryHeap heap;

@@ -107,7 +107,7 @@ public:
 		return size;
 	}
 	//is binary heap contains the desired value
-	bool ñontains(int desired_value){
+	bool contains(int desired_value){
 		for (int i = 0; i < size; i++)
 			if (binary_heap[i] == desired_value) return true;
 		return false;		

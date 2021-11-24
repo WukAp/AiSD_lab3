@@ -35,18 +35,18 @@ int main() {
 	std::cout << std::endl;
 
 
-	std::cout << "is the value 0 in the graph? - "<< (heap.ñontains(0)?"yes":"no") << "\n";
-	std::cout << "is the value 1 in the graph? - "<< (heap.ñontains(1)?"yes":"no") << "\n";
-	std::cout << "is the value 2 in the graph? - "<< (heap.ñontains(2)?"yes":"no") << "\n";
-	std::cout << "is the value 3 in the graph? - "<< (heap.ñontains(3)?"yes":"no") << "\n";
-	std::cout << "is the value 4 in the graph? - "<< (heap.ñontains(4)?"yes":"no") << "\n";
-	std::cout << "is the value 5 in the graph? - "<< (heap.ñontains(5)?"yes":"no") << "\n";
-	std::cout << "is the value 6 in the graph? - "<< (heap.ñontains(6)?"yes":"no") << "\n";
-	std::cout << "is the value 7 in the graph? - "<< (heap.ñontains(7)?"yes":"no") << "\n";
-	std::cout << "is the value 8 in the graph? - "<< (heap.ñontains(8)?"yes":"no") << "\n";
-	std::cout << "is the value 9 in the graph? - "<< (heap.ñontains(9)?"yes":"no") << "\n";
-	std::cout << "is the value 10 in the graph? - "<< (heap.ñontains(10)?"yes":"no") << "\n";
-	std::cout << "is the value -1 in the graph? - "<< (heap.ñontains(-1)?"yes":"no") << "\n";
+	std::cout << "is the value 0 in the graph? - "<< (heap.contains(0)?"yes":"no") << "\n";
+	std::cout << "is the value 1 in the graph? - "<< (heap.contains(1)?"yes":"no") << "\n";
+	std::cout << "is the value 2 in the graph? - "<< (heap.contains(2)?"yes":"no") << "\n";
+	std::cout << "is the value 3 in the graph? - "<< (heap.contains(3)?"yes":"no") << "\n";
+	std::cout << "is the value 4 in the graph? - "<< (heap.contains(4)?"yes":"no") << "\n";
+	std::cout << "is the value 5 in the graph? - "<< (heap.contains(5)?"yes":"no") << "\n";
+	std::cout << "is the value 6 in the graph? - "<< (heap.contains(6)?"yes":"no") << "\n";
+	std::cout << "is the value 7 in the graph? - "<< (heap.contains(7)?"yes":"no") << "\n";
+	std::cout << "is the value 8 in the graph? - "<< (heap.contains(8)?"yes":"no") << "\n";
+	std::cout << "is the value 9 in the graph? - "<< (heap.contains(9)?"yes":"no") << "\n";
+	std::cout << "is the value 10 in the graph? - "<< (heap.contains(10)?"yes":"no") << "\n";
+	std::cout << "is the value -1 in the graph? - "<< (heap.contains(-1)?"yes":"no") << "\n";
 	std::cout << std::endl;
 
 	std::cout << "adding value 5 to the graph...\n";
