@@ -16,6 +16,7 @@ namespace AiSDlab3Unittests
 			heap.insert(0);
 			heap.insert(-1);
 
+
 			Iterator* bft_iterator = heap.create_bft_iterator();
 			Assert::IsTrue(bft_iterator->next() == 3);
 			int next_value = bft_iterator->next();

@@ -34,7 +34,6 @@ int main() {
 	}
 	std::cout << std::endl;
 
-
 	std::cout << "is the value 0 in the graph? - "<< (heap.contains(0)?"yes":"no") << "\n";
 	std::cout << "is the value 1 in the graph? - "<< (heap.contains(1)?"yes":"no") << "\n";
 	std::cout << "is the value 2 in the graph? - "<< (heap.contains(2)?"yes":"no") << "\n";
@@ -51,6 +50,7 @@ int main() {
 
 	std::cout << "adding value 5 to the graph...\n";
 	heap.insert(5);
+
 	{
 		Iterator* bft_iterator = heap.create_bft_iterator();
 		std::cout << "traversing the graph in width: \n";

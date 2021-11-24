@@ -54,7 +54,7 @@ public:
 		};
 		//is the next value exist
 		bool has_next() {
-			return (count_of_passed_node < size);
+			return  count_of_passed_node < size;
 		}
 	};
 	//iterator for breadth-first search
@@ -71,7 +71,7 @@ public:
 			this->binary_heap = binary_heap;
 			this->size = size;
 			this->curr_index = 0;
-			queue.push(this->binary_heap[curr_index]);
+			if (size>0)queue.push(this->binary_heap[curr_index]);
 		}
 
 		//return next node of the graph
